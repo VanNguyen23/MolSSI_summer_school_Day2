@@ -1,4 +1,4 @@
-```"""
+"""
 geometry analysis functions
 """
 
@@ -22,6 +22,21 @@ def calculate_distance_list(rA, rB):
 
 
 def build_bond_list(coordinates, max_bond=2.93, min_bond=0):
+    """Build list of bonds from atomic coordinates based on distane.
+    Bonds are assigned when the distance between 2 atoms falls within a range of max and min distance.
+    Parameters
+    ----------
+    coordinates : np.array
+        An array of atomic coordinates.
+    max_bond : float, optional
+        The maximum distance between atoms to be considered a bond. Default is 2.93 bohr
+    min_bond : float, optional
+        Thi minimum distance between atoms to be considered a bond. Default is 0.
+    Returns
+    -------
+    bonds: dictionary
+        A dictionary of bonds with atom pair tuples as keys, and calculate bond lengths as value
+    """
     num_atoms = len(coordinates)
     
     bonds = {}
@@ -33,9 +48,4 @@ def build_bond_list(coordinates, max_bond=2.93, min_bond=0):
             if distance > min_bond and distance < max_bond:
                 bonds[(atom1, atom2)] = distance 
     
-    return bonds```
-
-Message Input
-
-
-Message summer_school_2019
+    return bonds
